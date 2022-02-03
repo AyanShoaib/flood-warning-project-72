@@ -2,6 +2,8 @@
 #
 # SPDX-License-Identifier: MIT
 
+from turtle import hideturtle
+from winreg import HKEY_LOCAL_MACHINE
 from floodsystem.stationdata import build_station_list
 
 
@@ -27,6 +29,7 @@ if __name__ == "__main__":
     run()
 
 
+hi
 
 
 
