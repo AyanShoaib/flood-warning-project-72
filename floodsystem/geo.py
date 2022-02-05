@@ -9,15 +9,10 @@ geographical data.
 
 
 from tokenize import Number
-
 from xmlrpc.server import SimpleXMLRPCRequestHandler
-
 from .utils import sorted_by_key  # noqa
-<<<<<<< HEAD
 from haversine import haversine
-=======
-from haversine import haversine 
->>>>>>> 55116753f3f568bbb0c4b9d85ffb053ae553d2a4
+
 
 #Task 1B
 def stations_by_distance(stations, p):
