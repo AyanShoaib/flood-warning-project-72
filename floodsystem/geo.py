@@ -2,15 +2,27 @@
 #
 # SPDX-License-Identifier: MIT
 """This module contains a collection of functions related to
+
 geographical data.
 
 """
 
 
 from tokenize import Number
+from turtle import distance
 from xmlrpc.server import SimpleXMLRPCRequestHandler
 from floodsystem.stationdata import build_station_list
 from .utils import sorted_by_key  # noqa
+import haversine 
+
+#Task 1B
+def stations_by_distance(stations, p):
+    StationDistance=[]
+    for station in stations:
+        StationDistance.append((station.name, haversine(station.coord, p)))
+    sortedDistance = sorted_by_key(StationDistance,1)
+    return sortedDistance
+
 
 
 # Task 1D
