@@ -25,6 +25,14 @@ def stations_by_distance(stations, p):
     StationDistance =(list(zip(stationname, distance)))
     StationDistance = sorted_by_key(StationDistance, 1)
     return StationDistance
+
+#Task 1C
+def stations_within_radius(stations, centre, r):
+    WithinRadius =[]
+    for station in stations:
+        if haversine(centre, station.coord) < r:
+            WithinRadius.append(station.name)
+    return  WithinRadius
     
 
 
