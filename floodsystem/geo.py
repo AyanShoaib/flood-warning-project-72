@@ -9,19 +9,24 @@ geographical data.
 
 
 from tokenize import Number
-from turtle import distance
+
 from xmlrpc.server import SimpleXMLRPCRequestHandler
-from floodsystem.stationdata import build_station_list
+
 from .utils import sorted_by_key  # noqa
-import haversine 
+from haversine import haversine 
 
 #Task 1B
 def stations_by_distance(stations, p):
-    StationDistance=[]
+    distance =[]
+    stationname =[]
     for station in stations:
-        StationDistance.append((station.name, haversine(station.coord, p)))
-    sortedDistance = sorted_by_key(StationDistance,1)
-    return sortedDistance
+        if station.name:
+            distance.append(haversine(p, station.coord))
+            stationname.append(station.name)
+    StationDistance =(list(zip(stationname, distance)))
+    StationDistance = sorted_by_key(StationDistance, 1)
+    return StationDistance
+    
 
 
 
