@@ -13,7 +13,7 @@ from turtle import distance
 from xmlrpc.server import SimpleXMLRPCRequestHandler
 from floodsystem.stationdata import build_station_list
 from .utils import sorted_by_key  # noqa
-import haversine 
+from haversine import haversine
 
 #Task 1B
 def stations_by_distance(stations, p):
