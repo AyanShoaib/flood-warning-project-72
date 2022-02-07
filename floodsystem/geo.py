@@ -10,6 +10,7 @@ geographical data.
 
 
 
+from tokenize import Number
 from .utils import sorted_by_key 
 from haversine import haversine, Unit
 
@@ -61,22 +62,24 @@ def stations_by_river(stations):
 
 # Task 1E
 def rivers_by_station_number(stations, N):
-    RiversByStationNumber = {}
-    for station in stations:
-        if station.river in RiversByStationNumber:
-            RiversByStationNumber[station.river].append(station.name)
-            len(RiversByStationNumber[station.river])
-        else:
-            RiversByStationNumber[station.river] = [station.name]
+    RiversByStationNumber = stations_by_river(stations)
     p = []
-
-    for key in RiversByStationNumber:
-        p.append((key,len(RiversByStationNumber[key])))
+    for key, value in RiversByStationNumber.items():
+        number = len(value)
+        p.append((key, number))
 
     NumberOrder = sorted_by_key(p,1,reverse=True)
-    FirstN = NumberOrder[0:N]
 
-    return FirstN
+    output = []
+    i = 0
+    for river in NumberOrder:
+        output.append(river)
+        i+=1
+        if i < len(NumberOrder) and NumberOrder[i][1] == output[-1][1]:
+            continue
+        elif i >+ N:
+            break
+    return output
 
     
 
