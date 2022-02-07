@@ -8,22 +8,24 @@ geographical data.
 """
 
 
-from tokenize import Number
-from xmlrpc.server import SimpleXMLRPCRequestHandler
-from .utils import sorted_by_key  # noqa
-from haversine import haversine
+
+
+from .utils import sorted_by_key 
+from haversine import haversine, Unit
 
 
 #Task 1B
 def stations_by_distance(stations, p):
-    distance =[]
-    stationname =[]
+    distance = []
+    StationName = []
+    StationTown =[]
     for station in stations:
         if station.name:
-            distance.append(haversine(p, station.coord))
-            stationname.append(station.name)
-    StationDistance =(list(zip(stationname, distance)))
-    StationDistance = sorted_by_key(StationDistance, 1)
+            distance.append(haversine(station.coord,p,unit=Unit.KILOMETERS))
+            StationName.append(station.name)
+            StationTown.append(station.town)
+    StationDistance = list(zip(StationName, StationTown, distance))
+    StationDistance = sorted_by_key(StationDistance, 2)
     return StationDistance
 
 #Task 1C
@@ -32,6 +34,7 @@ def stations_within_radius(stations, centre, r):
     for station in stations:
         if haversine(centre, station.coord) < r:
             WithinRadius.append(station.name)
+    WithinRadius = sorted_by_key(WithinRadius,0)
     return  WithinRadius
     
 
@@ -66,11 +69,16 @@ def rivers_by_station_number(stations, N):
         else:
             RiversByStationNumber[station.river] = [station.name]
     p = []
+
     for key in RiversByStationNumber:
         p.append((key,len(RiversByStationNumber[key])))
-    NumberOrder = sorted(p, key=lambda x:x[1], reverse=True)
+
+    NumberOrder = sorted_by_key(p,1,reverse=True)
     FirstN = NumberOrder[0:N]
+
     return FirstN
+
+    
 
 
   
