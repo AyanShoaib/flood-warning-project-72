@@ -33,6 +33,7 @@ def stationsbyriver_run():
 
 
 if __name__ == "__main__":
-   riverswithstation_run()
-   stationsbyriver_run()
+    print("*** Task 1D: CUED Part IA Flood Warning System ***")
+    riverswithstation_run()
+    stationsbyriver_run()
 
