@@ -1,5 +1,5 @@
 
-from winreg import HKEY_LOCAL_MACHINE
+
 from floodsystem.station import inconistant_typical_range_stations
 from floodsystem.stationdata import build_station_list
 
