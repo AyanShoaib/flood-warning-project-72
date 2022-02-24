@@ -60,5 +60,22 @@ def inconistant_typical_range_stations(stations):
             inconsistant.append(station.name)
     return inconsistant
 
-        
 
+#Task 2B
+from floodsystem.stationdata import build_station_list, update_water_levels
+from floodsystem.utils import sorted_by_key
+
+def relative_water_level(self):
+    if (self.latest_level==None) or (not self.typical_range_consistent()):
+        return None
+    return(self.latest_level - self.typical_range[0])/ (self.typical_range[1 - self.typical_range[0]])
+
+
+def stations_level_over_threshold(stations, tol):
+    StationName = []
+    StationLevel = []
+    for station in stations:
+        if relative_water_level(station) > tol and relative_water_level(station) != None :
+            StationName.append(station.name)
+            StationLevel.append(station.latest_level)
+        return sorted_by_key(StationName, StationLevel)
