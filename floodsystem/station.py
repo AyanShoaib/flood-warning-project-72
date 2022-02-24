@@ -78,4 +78,4 @@ def stations_level_over_threshold(stations, tol):
         if relative_water_level(station) > tol and relative_water_level(station) != None :
             StationName.append(station.name)
             StationLevel.append(station.latest_level)
-        return sorted_by_key(StationName, StationLevel)
+    return sorted_by_key(StationName, StationLevel)
