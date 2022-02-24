@@ -8,7 +8,7 @@ def polyfit(dates, levels, p):
     x-= d0
     y = levels
 
-    p_coeff = np.polyfit(x, y, 4)
+    p_coeff = np.polyfit(x, y, p)
     poly = np.poly1d(p_coeff)
 
     return poly, d0
