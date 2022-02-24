@@ -1,4 +1,5 @@
 
+from sympy import stationary_points
 from .utils import sorted_by_key
 
 
@@ -14,3 +15,11 @@ def stations_level_over_threshold(stations, tol):
                 StationLevel.append(station.relative_water_level())
                 StationOver = list(zip(StationName, StationLevel))
     return sorted_by_key(StationOver, 1)
+
+
+def stations_highest_rel_level(stations, N):
+    for station in stations:
+        if station.relative_water_level() != None:
+            StationOver = [(station, station.relative_water_level())]
+    
+    return sorted(StationOver, key = lambda a: a[1], reverse =True)[:N]
