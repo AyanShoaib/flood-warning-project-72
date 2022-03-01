@@ -1,4 +1,4 @@
-from sympy import plot
+
 from floodsystem.stationdata import build_station_list
 from floodsystem.stationdata import update_water_levels
 from floodsystem.datafetcher import fetch_measure_levels
@@ -21,4 +21,5 @@ def run():
 if __name__ == '__main__':
     print("*** Task 2E: CUED Part IA Flood Warning System ***")
     run()
+
 
