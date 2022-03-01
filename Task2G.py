@@ -28,7 +28,7 @@ def run():
         if station.typical_range is not None:
                 dates, levels = datafetcher.fetch_measure_levels(station.measure_id, datetime.timedelta(days=dt))
                 if dates is not [] and levels is not []:
-                    future_level = future_levels(dates, levels, 1)
+                    future_level = future_levels(dates, levels, 4)
                     if station.typical_range is not None:
                         future_station_name.append(station.name)
                         future_station_level.append(future_level)
